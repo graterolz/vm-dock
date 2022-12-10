@@ -1,0 +1,4 @@
+zone "seas-linux.es" {
+    type master;
+    file "/etc/bind/zones/db.seas-linux.es";
+};
