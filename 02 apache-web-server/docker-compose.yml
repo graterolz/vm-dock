@@ -11,3 +11,10 @@ services:
       - ././mcrypt.ini:/etc/php/7.3/apache2/conf.d/20-mcrypt.ini
     ports:
       - "80:80"
+networks:
+  default:
+    driver: seas-linux-net
+  ipam:
+    config:
+      - subnet: 172.20.0.0/24
+        gateway: 172.20.0.3
