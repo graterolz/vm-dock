@@ -1,5 +1,12 @@
 FROM php:7.3-apache
 
+# Copy configuration files
+# COPY ./site2 /var/www/public
+
+COPY ./site1                /var/www/html
+COPY ./virtualhost.conf     /etc/apache2/sites-enabled/000-default.conf
+COPY ./mcrypt.ini           /etc/php/7.3/apache2/conf.d/20-mcrypt.ini
+
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     software-properties-common \
