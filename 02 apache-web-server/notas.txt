@@ -1,0 +1,3 @@
+docker build -t apache .
+
+sudo docker run -d --rm --name=apache-server --net=seas-linux-net --ip=172.20.0.3 apache
