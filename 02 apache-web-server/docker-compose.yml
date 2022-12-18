@@ -1,8 +1,9 @@
 version: "3.1"
 services:
   webserver:
-    build: .
-    container_name: wiki
+    # build: .
+    image: apache
+    container_name: apache-server
     volumes:
       - ./site1:/var/www/html
       - ./site2:/var/www/public
