@@ -11,10 +11,11 @@ services:
       - ././mcrypt.ini:/etc/php/7.3/apache2/conf.d/20-mcrypt.ini
     ports:
       - "80:80"
-    networks:
-      default:
-        ipv4_address: 172.20.0.3
 networks:
   default:
-    external:
-      name: seas-linux-net
+    driver: brigde
+    name: seas-linux-net
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+          gateway: 172.20.0.5
