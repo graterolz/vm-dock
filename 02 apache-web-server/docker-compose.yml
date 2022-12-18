@@ -1,0 +1,12 @@
+version: "3.1"
+services:
+  webserver:
+    build: .
+    container_name: wiki
+    volumes:
+      - ./site1:/var/www/html
+      - ./site2:/var/www/public
+      - ././virtualhost.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ././mcrypt.ini:/etc/php/7.3/apache2/conf.d/20-mcrypt.ini
+    ports:
+      - "80:80"
