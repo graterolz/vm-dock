@@ -10,10 +10,9 @@ $TTL    604800
      IN      NS      ns1.seas-linux.es.
 
 ; name servers - A records
-ns1.seas-linux.es.          IN      A		172.20.0.2
-
 ns.seas-linux.es. 			IN 		A		127.0.0.1
-servidor1.seas-linux.es. 	IN 		A 		172.20.0.120
-servidor2.seas-linux.es. 	IN 		A 		172.20.0.121
-www.seas-linux.es.			IN 		A 		172.20.0.80
-mail.seas-linux.es.			IN 		A 		172.20.0.25 
+ns1.seas-linux.es.            IN        A		172.20.0.2
+
+public.seas-linux.es          IN        A         172.20.0.3
+restricted.seas-linux.es      IN        A         172.20.0.4
+authenticated.seas-linux.es   IN        A         172.20.0.5
