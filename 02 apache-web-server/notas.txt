@@ -1,3 +1,5 @@
-docker build -t apache .
+docker build -t apache-sitio1 .
 
-sudo docker run -d --rm --name=apache-server --net=seas-linux-net --ip=172.20.0.3 apache
+docker-compose up
+
+sudo docker run -d --rm --name=apache-server1 --net=seas-linux-net --ip=172.20.0.3 apache-sitio1

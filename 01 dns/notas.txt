@@ -2,7 +2,7 @@ docker network create --subnet=172.20.0.0/24 seas-linux-net
 
 docker build -t bind9 .
 
-docker run -d --rm --name=dns-server --net=seas-linux-net --ip=172.20.0.2 bind9
+docker run -d --rm --name=dns-server --net=seas-linux-net --ip=172.20.0.2 bind9 --restart unless-stopped
 
 #docker exec -d dns-server /etc/init.d/bind9 start
 #docker exec -it dns-server /etc/init.d/bind9 start

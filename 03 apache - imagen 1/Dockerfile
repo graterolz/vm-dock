@@ -1,5 +1,10 @@
 FROM php:7.3-apache
 
+COPY index.html         /var/www/html
+COPY 000-default.conf   /etc/apache2/sites-enabled/000-default.conf
+COPY mcrypt.ini         /etc/php/7.3/apache2/conf.d/20-mcrypt.ini
+
+
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     software-properties-common \
