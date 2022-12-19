@@ -1,0 +1,21 @@
+https://hub.docker.com/r/osixia/openldap/tags
+
+docker pull osixia/openldap:latest
+
+docker run --name openldap-server \
+	--env LDAP_ORGANISATION="My Company" \
+	--env LDAP_DOMAIN="ldap.example.com" \
+	--env LDAP_ADMIN_PASSWORD="StrongAdminPassw0rd" \
+	--detach osixia/openldap:latest 
+
+
+docker run --name openldap-server \
+	--env LDAP_ORGANISATION="My Company" \
+	--env LDAP_DOMAIN="localhost" \
+	--env LDAP_ADMIN_PASSWORD="StrongAdminPassw0rd" \
+	--detach osixia/openldap:latest -p 80:80
+
+--
+--
+--
+docker pull osixia/phpldapadmin:latest

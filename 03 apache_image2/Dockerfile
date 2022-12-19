@@ -1,9 +1,13 @@
 FROM php:7.3-apache
 
-COPY index.html         /var/www/html
-COPY 000-default.conf   /etc/apache2/sites-enabled/000-default.conf
-COPY mcrypt.ini         /etc/php/7.3/apache2/conf.d/20-mcrypt.ini
+RUN mkdir -p /home/demo
 
+COPY index.html                     /home/demo
+COPY ./config/000-default.conf      /etc/apache2/sites-enabled/000-default.conf
+COPY ./config/ports.conf            /etc/apache2/ports.conf
+COPY ./config/mcrypt.ini            /etc/php/7.3/apache2/conf.d/20-mcrypt.ini
+COPY ./config/apache2.conf          /etc/apache2/apache2.conf
+COPY ./config/htpasswd              /etc/apache2/.htpasswd
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \

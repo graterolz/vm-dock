@@ -1,0 +1,17 @@
+REF: https://www.damianculotta.com.ar/docker/de-entorno-local-a-docker-mi-primer-container/
+REF: https://www.tutorialspoint.com/how-to-set-up-apache-to-use-password-authentication-on-ubuntu-16-04
+
+-- Image 1 --
+
+docker build -t apache-sitio1 .
+
+docker run -d --name=apache-server1 -p 80:80 -p 443:443 apache-sitio1 --net=seas-linux-net --ip=172.20.0.3 
+
+-- Image 2 --
+docker build -t apache-sitio2 .
+
+docker run -d --name=apache-server2 -p 80:80 apache-sitio2 --net=seas-linux-net --ip=172.20.0.4 
+
+-- Commands --
+htpasswd -c /etc/apache2/.htpasswd admin
+htpasswd -c /etc/apache2/.htpasswd demo
