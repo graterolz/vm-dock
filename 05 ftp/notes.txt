@@ -1,3 +1,5 @@
+REF: https://github.com/garethflowers/docker-ftp-server
+
 docker pull garethflowers/ftp-server
 
 docker run \
@@ -20,6 +22,7 @@ docker run \
 	--volume /c/Users/graterolz/Desktop/vm-dock/05/data:/var/ftp-guest-seas \
 	garethflowers/ftp-server
 
+REF: https://hub.docker.com/r/fauria/vsftpd
 
 docker run -d -v ~/data:/home/vsftpd \
 -p 20:20 -p 21:21 -p 21100-21110:21100-21110 \
