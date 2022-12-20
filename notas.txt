@@ -5,12 +5,12 @@ REF: https://www.tutorialspoint.com/how-to-set-up-apache-to-use-password-authent
 
 docker build -t apache-sitio1 .
 
-docker run -d --name=apache-server1 -p 80:80 -p 443:443 apache-sitio1 --net=seas-linux-net --ip=172.20.0.3 
+docker run -d --name=apache-server1 -p 80:80 -p 443:443 apache-sitio1 --net=seas-linux-net --ip=172.20.0.3 --restart unless-stopped
 
 -- Image 2 --
 docker build -t apache-sitio2 .
 
-docker run -d --name=apache-server2 -p 80:80 apache-sitio2 --net=seas-linux-net --ip=172.20.0.4 
+docker run -d --name=apache-server2 -p 81:81 apache-sitio2 --net=seas-linux-net --ip=172.20.0.4 --restart unless-stopped
 
 -- Commands --
 htpasswd -c /etc/apache2/.htpasswd admin
