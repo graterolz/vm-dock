@@ -1,0 +1,28 @@
+docker pull garethflowers/ftp-server
+
+docker run \
+	--detach \
+	--env FTP_PASS=123 \
+	--env FTP_USER=user \
+	--name my-ftp-server \
+	--publish 20-21:20-21/tcp \
+	--publish 40000-40009:40000-40009/tcp \
+	--volume ~/Desktop/vm-dock/05/data:/home/user \
+	garethflowers/ftp-server
+
+docker run \
+	--detach \
+	--env FTP_PASS=123 \
+	--env FTP_USER=guest-seas \
+	--name my-ftp-server \
+	--publish 20-21:20-21/tcp \
+	--publish 40000-40009:40000-40009/tcp \
+	--volume /c/Users/graterolz/Desktop/vm-dock/05/data:/var/ftp-guest-seas \
+	garethflowers/ftp-server
+
+
+docker run -d -v ./data:/home/vsftpd \
+-p 20:20 -p 21:21 -p 21100-21110:21100-21110 \
+-e FTP_USER=myuser -e FTP_PASS=mypass \
+-e PASV_ADDRESS=127.0.0.1 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 \
+--name vsftpd fauria/vsftpd

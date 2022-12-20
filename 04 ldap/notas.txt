@@ -2,20 +2,30 @@ https://hub.docker.com/r/osixia/openldap/tags
 
 docker pull osixia/openldap:latest
 
-docker run --name openldap-server \
+docker run \
+	--name openldap-server \
+	-p 389:389 \
+	-p 636:636 \
+	--hostname ldap.seas-linux.es \
 	--env LDAP_ORGANISATION="My Company" \
-	--env LDAP_DOMAIN="ldap.example.com" \
-	--env LDAP_ADMIN_PASSWORD="StrongAdminPassw0rd" \
-	--detach osixia/openldap:latest 
+	--env LDAP_DOMAIN="seas-linux.es" \
+	--env LDAP_ADMIN_PASSWORD="admin" \
+	--env LDAP_BASE_DN="dc=seas-linux,dc=es" \
+	--env LDAP_TLS=false \
+	--detach osixia/openldap:latest
 
-
-docker run --name openldap-server \
-	--env LDAP_ORGANISATION="My Company" \
-	--env LDAP_DOMAIN="localhost" \
-	--env LDAP_ADMIN_PASSWORD="StrongAdminPassw0rd" \
-	--detach osixia/openldap:latest -p 80:80
-
---
---
 --
 docker pull osixia/phpldapadmin:latest
+
+docker run \
+    --name phpldapadmin \
+    -p 80:80 \
+    -p 443:443 \
+    --hostname phpldapadmin-service \
+    --link openldap-server:ldap-host \
+    --env PHPLDAPADMIN_LDAP_HOSTS=ldap.seas-linux.es \
+    --detach osixia/phpldapadmin:latest
+--
+U: cn=admin,dc=seas-linux,dc=es
+https://localhost:443/
+https://localhost:80/
